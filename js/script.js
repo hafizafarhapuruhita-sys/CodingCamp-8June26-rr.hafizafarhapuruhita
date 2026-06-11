@@ -9,6 +9,27 @@ const transactionAmount = document.getElementById("transactionAmount");
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
 
+function renderTransactions() {
+
+    transactionList.innerHTML = "";
+
+    let total = 0;
+
+    for (let transaction of transactions) {
+
+        const newItem = document.createElement("li");
+
+        newItem.textContent =
+            transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
+
+        transactionList.appendChild(newItem);
+
+        total += Number(transaction.amount);
+    }
+
+    document.getElementById("totalAmount").textContent = "Total Pengeluaran: Rp" + total;
+}
+renderTransactions();
 addButton.addEventListener("click", function () {
 
     const name = transactionName.value;
@@ -51,5 +72,6 @@ transactions.push(transaction);
     "transactions",
     JSON.stringify(transactions)
 );
+    renderTransactions();
 
 });
