@@ -1,3 +1,8 @@
+let transactions = [];
+const savedTransactions =
+    localStorage.getItem("transactions");
+if (savedTransactions) {transactions = JSON.parse(savedTransactions);
+}
 const addButton = document.getElementById("addButton");
 const transactionName = document.getElementById("transactionName");
 const transactionAmount = document.getElementById("transactionAmount");
@@ -9,6 +14,11 @@ addButton.addEventListener("click", function () {
     const name = transactionName.value;
     const amount = transactionAmount.value;
     const category = transactionCategory.value;
+    const transaction = {
+    name: name,
+    amount: amount,
+    category: category
+};
     if (name === "" || amount === "") {
     alert("Mohon isi nama transaksi dan jumlah.");
     return;
@@ -35,5 +45,11 @@ currentValue =
 currentTotal.textContent = "Total Pengeluaran: Rp" + currentValue;
     transactionName.value = "";
     transactionAmount.value = "";
+    
+transactions.push(transaction);
+    localStorage.setItem(
+    "transactions",
+    JSON.stringify(transactions)
+);
 
 });
