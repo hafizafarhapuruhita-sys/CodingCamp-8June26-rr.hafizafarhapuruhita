@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <title>Expense & Budget Visualizer</title>
 </head>
 <body>
-    <h1>Halo Hafiza!</h1>
+    <h1>Expense & Budget Visualizer</h1>
+
+<form>
+    <label>Nama Transaksi</label>
+    <br>
+    <input type="text" id="transactionName">
+    <br><br>
+
+    <label>Jumlah</label>
+    <br>
+    <input type="number" id="transactionAmount">
+    <br><br>
+
+    <button type="button" id="addButton">Tambah</button>
+</form>
+
+<hr>
+
+<h2>Daftar Transaksi</h2>
+
+<ul id="transactionList">
+</ul>
+    <script src="js/script.js"></script>
 </body>
 </html>
