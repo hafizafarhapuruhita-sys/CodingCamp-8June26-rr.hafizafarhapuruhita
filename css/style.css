@@ -1,3 +1,72 @@
 body {
     font-family: Georgia, serif;
+    background-color: #faf8eb;
+    color: #241406;
+
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    color: #0d1238;
+}
+form {
+    background-color: white;
+    padding: 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+input,
+select {
+    width: 100%;
+
+    padding: 10px;
+
+    margin-top: 5px;
+
+    border-radius: 8px;
+
+    border: 1px solid #ccc;
+
+    box-sizing: border-box;
+}
+button {
+    background-color: #25378f;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+button:hover {
+    opacity: 0.85;
+}
+ul {
+    list-style: none;
+
+    padding: 0;
+}
+li {
+    background-color: white;
+
+    margin-bottom: 10px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#totalAmount {
+    text-align: right;
+
+    color: #25378f;
 }
