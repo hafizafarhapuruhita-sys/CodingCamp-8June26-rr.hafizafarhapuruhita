@@ -15,13 +15,28 @@ function renderTransactions() {
 
     let total = 0;
 
-    for (let transaction of transactions) {
+    for (let i = 0; i < transactions.length; i++) {
+        const transaction = transactions[i];
         const newItem = document.createElement("li");
+        const deleteButton =
+    document.createElement("button");
+    deleteButton.textContent = "Delete";
         newItem.textContent =
         transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
+        newItem.appendChild(deleteButton);
         transactionList.appendChild(newItem);
         total += Number(transaction.amount);
     }
+    deleteButton.addEventListener("click", function () {
+    transactions.splice(i, 1);
+    localStorage.setItem(
+        "transactions",
+        JSON.stringify(transactions)
+    );
+
+    renderTransactions();
+
+});
 
     document.getElementById("totalAmount").textContent = "Rp" + total;
 }
