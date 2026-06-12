@@ -6,6 +6,14 @@ if (savedTransactions) {transactions = JSON.parse(savedTransactions);
 const addButton = document.getElementById("addButton");
 const transactionName = document.getElementById("transactionName");
 const transactionAmount = document.getElementById("transactionAmount");
+transactionAmount.addEventListener("input", function () {
+    let value = transactionAmount.value;
+    value = value.replace(/\D/g, "");
+    transactionAmount.value =
+        Number(value).toLocaleString("id-ID");
+});
+const cleanAmount = amount.replace(/\./g, "");
+amount: cleanAmount
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
 
