@@ -112,11 +112,8 @@ li {
 .transaction-section,
 .chart-section {
     background: white;
-
     padding: 20px;
-
     border-radius: 15px;
-
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 .over-limit {
@@ -146,4 +143,7 @@ li {
 }
 .dark-mode .balance-card p {
     color: #cccccc;
+}
+#themeButton {
+    float: center;
 }
