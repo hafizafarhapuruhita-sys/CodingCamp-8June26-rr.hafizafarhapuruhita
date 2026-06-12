@@ -63,6 +63,7 @@ newItem.classList.add("transaction-item");
         JSON.stringify(transactions)
     );
     renderTransactions();
+    renderChart();
 });
         const textSpan = document.createElement("span");
 textSpan.textContent =
@@ -76,6 +77,7 @@ textSpan.textContent =
     document.getElementById("totalAmount").textContent = "Rp" + total;
 }
 renderTransactions();
+renderChart();
 addButton.addEventListener("click", function () {
 
     const name = transactionName.value;
@@ -99,7 +101,5 @@ transactions.push(transaction);
     JSON.stringify(transactions)
 );
     renderTransactions();
-    document.getElementById("totalAmount").textContent =
-    "Rp" + Number(total).toLocaleString("id-ID");
     renderChart();
 });
