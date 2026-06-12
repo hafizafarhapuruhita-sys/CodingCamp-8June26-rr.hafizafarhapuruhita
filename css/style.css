@@ -92,3 +92,30 @@ li {
     border-radius: 6px;
     cursor: pointer;
 }
+.content-section {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+.transaction-section {
+    flex: 2;
+}
+
+.chart-section {
+    flex: 1;
+}
+.chart-section canvas {
+    max-width: 300px;
+    max-height: 300px;
+    margin: auto;
+}
+.transaction-section,
+.chart-section {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
