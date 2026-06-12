@@ -13,6 +13,10 @@ transactionAmount.addEventListener("input", function () {
 });
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
+const limit =
+    Number(document.getElementById("spendingLimit").value.replace(/\./g, ""));
+if (Number(transaction.amount) > limit) {newItem.classList.add("over-limit");
+}
 
     let chart;
     function renderChart() {
