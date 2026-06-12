@@ -15,33 +15,11 @@ function renderTransactions() {
 
     let total = 0;
 
-    for (let i = 0; i < transactions.length; i++) {
+    for (let transaction of transactions) {
         const newItem = document.createElement("li");
-
-newItem.textContent =
-transaction.name + " - Rp" +
-transaction.amount +
-" (" + transaction.category + ") ";
-
-const deleteButton =
-document.createElement("button");
-
-deleteButton.textContent =
-"Delete";
-
-deleteButton.addEventListener("click", function () {
-    transactions.splice(i, 1);
-    localStorage.setItem(
-        "transactions",
-        JSON.stringify(transactions)
-    );
-
-    renderTransactions();
-
-});
-
-newItem.appendChild(deleteButton);
-transactionList.appendChild(newItem);
+        newItem.textContent =
+        transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
+        transactionList.appendChild(newItem);
         total += Number(transaction.amount);
     }
 
@@ -69,6 +47,19 @@ addButton.addEventListener("click", function () {
     name + " - Rp" + amount + " (" + category + ")";
 
     transactionList.appendChild(newItem);
+    const currentTotal =
+    document.getElementById("totalAmount");
+
+let totalText =
+    currentTotal.textContent;
+
+let currentValue =
+    Number(totalText.replace("Rp" + total));
+
+currentValue =
+    currentValue + Number(amount);
+
+currentTotal.textContent = "Rp" + currentValue;
     transactionName.value = "";
     transactionAmount.value = "";
     
