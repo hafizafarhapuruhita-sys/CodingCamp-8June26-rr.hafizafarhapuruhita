@@ -10,33 +10,28 @@ const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
 
 function renderTransactions() {
-
     transactionList.innerHTML = "";
-
     let total = 0;
-
     for (let i = 0; i < transactions.length; i++) {
         const transaction = transactions[i];
         const newItem = document.createElement("li");
         const deleteButton =
     document.createElement("button");
     deleteButton.textContent = "Delete";
-        newItem.textContent =
-        transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
-        newItem.appendChild(deleteButton);
-        transactionList.appendChild(newItem);
-        total += Number(transaction.amount);
-    }
     deleteButton.addEventListener("click", function () {
     transactions.splice(i, 1);
     localStorage.setItem(
         "transactions",
         JSON.stringify(transactions)
     );
-
     renderTransactions();
-
 });
+        newItem.textContent =
+        transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
+        newItem.appendChild(deleteButton);
+        transactionList.appendChild(newItem);
+        total += Number(transaction.amount);
+    }
 
     document.getElementById("totalAmount").textContent = "Rp" + total;
 }
@@ -55,26 +50,6 @@ addButton.addEventListener("click", function () {
     alert("Mohon isi nama transaksi dan jumlah.");
     return;
 }
-
-    const newItem = document.createElement("li");
-
-    newItem.textContent =
-    name + " - Rp" + amount + " (" + category + ")";
-
-    transactionList.appendChild(newItem);
-    const currentTotal =
-    document.getElementById("totalAmount");
-
-let totalText =
-    currentTotal.textContent;
-
-let currentValue =
-    Number(totalText.replace("Rp" + total));
-
-currentValue =
-    currentValue + Number(amount);
-
-currentTotal.textContent = "Rp" + currentValue;
     transactionName.value = "";
     transactionAmount.value = "";
     
@@ -84,5 +59,4 @@ transactions.push(transaction);
     JSON.stringify(transactions)
 );
     renderTransactions();
-
 });
