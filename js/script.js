@@ -74,7 +74,7 @@ textSpan.textContent =
         total += Number(transaction.amount);
     }
 
-    document.getElementById("totalAmount").textContent = "Rp" + total;
+    document.getElementById("totalAmount").textContent = "Rp" + total.toLocaleString("id-ID");
 }
 renderTransactions();
 renderChart();
@@ -89,7 +89,7 @@ addButton.addEventListener("click", function () {
     category: category
 };
     if (name === "" || amount === "") {
-    alert("Mohon isi nama transaksi dan jumlah.");
+    alert("Please fill in the item name and amount.");
     return;
 }
     transactionName.value = "";
