@@ -13,6 +13,7 @@ transactionAmount.addEventListener("input", function () {
 });
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
+const themeButton = document.getElementById("themeButton");
 const spendingLimit = document.getElementById("spendingLimit");
 const savedLimit = localStorage.getItem("spendingLimit");
 if (savedLimit) {
@@ -96,8 +97,14 @@ textSpan.textContent =
 }
 renderTransactions();
 renderChart();
+const savedTheme =
+    localStorage.getItem("theme");
+if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    themeButton.textContent =
+        "Light Mode";
+}
 addButton.addEventListener("click", function () {
-
     const name = transactionName.value;
     const amount = transactionAmount.value.replace(/\./g, "");
     const category = transactionCategory.value;
@@ -120,4 +127,26 @@ transactions.push(transaction);
 );
     renderTransactions();
     renderChart();
+});
+themeButton.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+    if (
+        document.body.classList.contains(
+            "dark-mode"
+        )
+    ) {
+        themeButton.textContent =
+            "Light Mode";
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+    } else {
+        themeButton.textContent =
+            "Dark Mode";
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+    }
 });
