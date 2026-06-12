@@ -20,6 +20,19 @@ const spendingLimit =
 });
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
+const spendingLimit = document.getElementById("spendingLimit");
+const savedLimit = localStorage.getItem("spendingLimit");
+if (savedLimit) {
+    spendingLimit.value = savedLimit;
+}
+spendingLimit.addEventListener("input", function () {
+    let value = spendingLimit.value;
+    value = value.replace(/\D/g, "");
+    spendingLimit.value = Number(value).toLocaleString("id-ID");
+    localStorage.setItem("spendingLimit",spendingLimit.value
+    );
+    renderTransactions();
+});
     let chart;
     function renderChart() {
     const categoryTotals = {};
