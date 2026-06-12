@@ -15,6 +15,7 @@ function renderTransactions() {
     for (let i = 0; i < transactions.length; i++) {
         const transaction = transactions[i];
         const newItem = document.createElement("li");
+newItem.classList.add("transaction-item");
         const deleteButton =
     document.createElement("button");
     deleteButton.textContent = "Delete";
@@ -26,8 +27,12 @@ function renderTransactions() {
     );
     renderTransactions();
 });
-        newItem.textContent =
-        transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
+        const textSpan = document.createElement("span");
+textSpan.textContent =
+    transaction.name + " - Rp" +
+    transaction.amount + " (" +
+    transaction.category + ")";
+        newItem.appendChild(textSpan);
         newItem.appendChild(deleteButton);
         transactionList.appendChild(newItem);
         total += Number(transaction.amount);
