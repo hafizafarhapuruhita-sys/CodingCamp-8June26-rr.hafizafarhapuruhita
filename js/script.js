@@ -47,19 +47,6 @@ addButton.addEventListener("click", function () {
     name + " - Rp" + amount + " (" + category + ")";
 
     transactionList.appendChild(newItem);
-    const currentTotal =
-    document.getElementById("totalAmount");
-
-let totalText =
-    currentTotal.textContent;
-
-let currentValue =
-    Number(totalText.replace("Rp" + total));
-
-currentValue =
-    currentValue + Number(amount);
-
-currentTotal.textContent = "Rp" + currentValue;
     transactionName.value = "";
     transactionAmount.value = "";
     
