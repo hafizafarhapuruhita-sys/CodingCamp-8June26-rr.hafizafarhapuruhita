@@ -71,3 +71,7 @@ li {
     font-size: 40px;
     margin: 0;
 }
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+}
