@@ -12,6 +12,23 @@ transactionAmount.addEventListener("input", function () {
         Number(value).toLocaleString("id-ID");
 });
 const transactionCategory = document.getElementById("transactionCategory");
+const newCategory = document.getElementById("newCategory");
+const addCategoryButton = document.getElementById("addCategoryButton");
+let categories =
+    ["Food", "Transport", "Fun"];
+const savedCategories =
+    localStorage.getItem("categories");
+if (savedCategories) {
+    categories = JSON.parse(savedCategories);
+}
+function renderCategories() {
+    transactionCategory.innerHTML = "";
+    for (let category of categories) {
+        const option = document.createElement("option");
+        option.textContent = category;
+        transactionCategory.appendChild(option);
+    }
+}
 const transactionList = document.getElementById("transactionList");
 const themeButton = document.getElementById("themeButton");
 const spendingLimit = document.getElementById("spendingLimit");
@@ -81,6 +98,7 @@ newItem.classList.add("transaction-item");
         "transactions",
         JSON.stringify(transactions)
     );
+    renderCategories();
     renderTransactions();
     renderChart();
 });
@@ -150,3 +168,22 @@ themeButton.addEventListener("click", function () {
         );
     }
 });
+addCategoryButton.addEventListener(
+    "click",
+    function () {
+        const categoryName = newCategory.value.trim();
+        if (categoryName === "") {
+            alert(
+                "Please enter a category."
+            );
+            return;
+        }
+        categories.push(categoryName);
+        localStorage.setItem(
+            "categories",
+            JSON.stringify(categories)
+        );
+        renderCategories();
+        newCategory.value = "";
+    }
+);
