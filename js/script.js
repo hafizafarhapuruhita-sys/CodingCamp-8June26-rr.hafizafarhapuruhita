@@ -16,18 +16,14 @@ function renderTransactions() {
     let total = 0;
 
     for (let transaction of transactions) {
-
         const newItem = document.createElement("li");
-
         newItem.textContent =
-            transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
-
+        transaction.name + " - Rp" + transaction.amount + " (" + transaction.category + ")";
         transactionList.appendChild(newItem);
-
         total += Number(transaction.amount);
     }
 
-    document.getElementById("totalAmount").textContent = "Total Pengeluaran: Rp" + total;
+    document.getElementById("totalAmount").textContent = "Rp" + total;
 }
 renderTransactions();
 addButton.addEventListener("click", function () {
@@ -58,12 +54,12 @@ let totalText =
     currentTotal.textContent;
 
 let currentValue =
-    Number(totalText.replace("Total Pengeluaran: Rp",""));
+    Number(totalText.replace("Rp" + total));
 
 currentValue =
     currentValue + Number(amount);
 
-currentTotal.textContent = "Total Pengeluaran: Rp" + currentValue;
+currentTotal.textContent = "Rp" + currentValue;
     transactionName.value = "";
     transactionAmount.value = "";
     
