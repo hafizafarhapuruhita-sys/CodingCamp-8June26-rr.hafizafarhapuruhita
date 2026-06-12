@@ -68,7 +68,7 @@ li {
 .balance-card h2 {
     color: #25378f;
     font-size: 40px;
-    margin: 0;
+    margin: 10px;
 }
 .transaction-item {
     display: flex;
