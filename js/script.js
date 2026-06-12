@@ -11,6 +11,13 @@ transactionAmount.addEventListener("input", function () {
     transactionAmount.value =
         Number(value).toLocaleString("id-ID");
 });
+const spendingLimit =
+    document.getElementById("spendingLimit");
+    spendingLimit.addEventListener("input", function () {
+    let value = spendingLimit.value;
+    value = value.replace(/\D/g, "");
+    spendingLimit.value = Number(value).toLocaleString("id-ID");
+});
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
     let chart;
