@@ -7,10 +7,12 @@
 </head>
 <body>
     <h1>Expense & Budget Visualizer</h1>
-    <button type="button" id="themeButton">
-    Dark Mode
-    </button>
 <div class="balance-card">
+    <button
+        type="button"
+        id="themeButton">
+        Dark Mode
+    </button>
     <p>Total Balance</p>
     <h2 id="totalAmount">Rp0</h2>
 </div>
@@ -30,7 +32,19 @@
     <br>
     <input type="text" id="transactionAmount"/>
     <br><br>
-
+    
+    <h3>Custom Category</h3>
+<input
+    type="text"
+    id="newCategory"
+    placeholder="Enter new category">
+<br><br>
+    
+<button type="button" id="addCategoryButton">
+    Add Category
+</button>
+<br><br>
+    
     <label>Category</label>
     <br>
     <select id="transactionCategory">
