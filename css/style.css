@@ -26,7 +26,7 @@ select {
     box-sizing: border-box;
 }
 button {
-    background-color: #25378f;
+    background-color: #3474a8;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -34,7 +34,7 @@ button {
     cursor: pointer;
 }
 button:hover {
-    opacity: 0.85;
+    background-color: #01326e;
 }
 ul {
     list-style: none;
