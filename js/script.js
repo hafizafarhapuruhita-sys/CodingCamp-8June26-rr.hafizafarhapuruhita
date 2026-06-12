@@ -13,11 +13,6 @@ transactionAmount.addEventListener("input", function () {
 });
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
-const limit =
-    Number(document.getElementById("spendingLimit").value.replace(/\./g, ""));
-if (Number(transaction.amount) > limit) {newItem.classList.add("over-limit");
-}
-
     let chart;
     function renderChart() {
     const categoryTotals = {};
@@ -56,6 +51,12 @@ function renderTransactions() {
     for (let i = 0; i < transactions.length; i++) {
         const transaction = transactions[i];
         const newItem = document.createElement("li");
+const limit = Number(document.getElementById("spendingLimit").value.replace(/\./g, "")
+    );
+if (limit > 0 && Number(transaction.amount) > limit
+) {
+    newItem.classList.add("over-limit");
+}
 newItem.classList.add("transaction-item");
         const deleteButton =
     document.createElement("button");
