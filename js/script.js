@@ -1,6 +1,5 @@
 let transactions = [];
-const savedTransactions =
-    localStorage.getItem("transactions");
+const savedTransactions = localStorage.getItem("transactions");
 if (savedTransactions) {transactions = JSON.parse(savedTransactions);
 }
 const addButton = document.getElementById("addButton");
@@ -12,11 +11,41 @@ transactionAmount.addEventListener("input", function () {
     transactionAmount.value =
         Number(value).toLocaleString("id-ID");
 });
-const cleanAmount = amount.replace(/\./g, "");
-amount: cleanAmount
 const transactionCategory = document.getElementById("transactionCategory");
 const transactionList = document.getElementById("transactionList");
 
+    let chart;
+    function renderChart() {
+    const categoryTotals = {};
+    for (let transaction of transactions) {
+        const category = transaction.category;
+        if (!categoryTotals[category]) {
+            categoryTotals[category] = 0;
+        }
+        categoryTotals[category] +=
+            Number(transaction.amount);
+    }
+    const labels =
+        Object.keys(categoryTotals);
+    const values =
+        Object.values(categoryTotals);
+    const ctx =
+        document
+        .getElementById("expenseChart")
+        .getContext("2d");
+    if (chart) {
+        chart.destroy();
+    }
+    chart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: labels,
+            datasets: [{
+            data: values
+            }]
+        }
+    });
+}
 function renderTransactions() {
     transactionList.innerHTML = "";
     let total = 0;
@@ -37,9 +66,7 @@ newItem.classList.add("transaction-item");
 });
         const textSpan = document.createElement("span");
 textSpan.textContent =
-    transaction.name + " - Rp" +
-    transaction.amount + " (" +
-    transaction.category + ")";
+    transaction.name + " - Rp" + Number(transaction.amount).toLocaleString("id-ID") + " (" + transaction.category + ")";
         newItem.appendChild(textSpan);
         newItem.appendChild(deleteButton);
         transactionList.appendChild(newItem);
@@ -52,7 +79,7 @@ renderTransactions();
 addButton.addEventListener("click", function () {
 
     const name = transactionName.value;
-    const amount = transactionAmount.value;
+    const amount = transactionAmount.value.replace(/\./g, "");
     const category = transactionCategory.value;
     const transaction = {
     name: name,
@@ -72,4 +99,7 @@ transactions.push(transaction);
     JSON.stringify(transactions)
 );
     renderTransactions();
+    document.getElementById("totalAmount").textContent =
+    "Rp" + Number(total).toLocaleString("id-ID");
+    renderChart();
 });
